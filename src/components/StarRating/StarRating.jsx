@@ -5,7 +5,7 @@ const StarRating = ({ currentRating, onRate }) => {
   const [hoverRating, setHoverRating] = useState(0);
 
   return (
-    <div className="star-rating">
+    <div className="star_rating">
       {[1, 2, 3, 4, 5].map((star) => (
         <span
           key={star}
@@ -16,10 +16,10 @@ const StarRating = ({ currentRating, onRate }) => {
           onMouseLeave={() => setHoverRating(0)}
           onClick={() => onRate(star)}
         >
-          // insert star picture here //
+          ★
         </span>
       ))}
-      <span className="rating-text">
+      <span className="rating_text">
         {currentRating > 0 ? `${currentRating}/5` : "Rate this"}
       </span>
     </div>

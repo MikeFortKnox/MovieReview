@@ -1,12 +1,18 @@
-.movie-list {
+.movie_list {
   display: grid;
   gap: 20px;
   padding: 20px 0;
 }
 
-.movie-card {
+.movie_card {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   background: #fff;
+}
+
+.reviews_count {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
 }

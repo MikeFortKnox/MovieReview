@@ -1,8 +1,48 @@
 import React, { useState } from "react";
-import MovieList from "./components/MovieList/MovieList";
+import MovieList from "../MovieList/MovieList";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-const App = () => {
+function App() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const handleRegisterSubmit = (name, email, password, avatar, resetForm) => {
+    console.log("Registration data:", { name, email, password, avatar });
+    resetForm(); // Clear form
+    setIsRegisterModalOpen(false); // Close modal
+  };
+
+  return (
+    <div className="App">
+      <Header
+        onLoginButtonClick={() => setIsLoginModalOpen(true)}
+        onRegisterButtonClick={() => setIsRegisterModalOpen(true)}
+      />
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
+
+      <RegisterModal
+        isOpen={isRegisterModalOpen}
+        onClose={() => setIsRegisterModalOpen(false)}
+        onRegisterModalSubmit={handleRegisterSubmit} // Pass the function
+        handleLogin={() => {
+          setIsRegisterModalOpen(false);
+        }}
+      />
+      <Movies />
+    </div>
+  );
+}
+
+const Movies = () => {
   const [movies, setMovies] = useState([
     {
       id: 1,
@@ -54,8 +94,11 @@ const App = () => {
   const calculateAverage = (ratings) => {
     if (ratings.length === 0) return 0;
     const sum = ratings.reduce((a, b) => a + b, 0);
-    return parseFloat((sum / ratings.length).toFixed(1)); // ex. "4.3"
+    return parseFloat((sum / ratings.length).toFixed(1));
   };
+
+  // user rating
+  // based on whatever stars user gives it and then adds to avg rating
 
   return (
     <div className="app">
