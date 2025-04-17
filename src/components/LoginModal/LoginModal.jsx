@@ -24,7 +24,6 @@ const LoginModal = ({ onClose, onLogin, isOpen, handleRegister }) => {
     event.preventDefault();
     if (email && password) {
       onLogin(email, password, resetForm);
-      // Optionally reset the form fields after submission
     } else {
       alert("Please fill in all fields.");
     }

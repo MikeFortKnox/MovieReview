@@ -3,13 +3,25 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Header({ isLoggedIn, onLoginButtonClick, onRegisterButtonClick }) {
+function Header({
+  isLoggedIn,
+  onLoginButtonClick,
+  onRegisterButtonClick,
+  onSearchButtonClick,
+}) {
   const currentUser = useContext(CurrentUserContext);
 
   return (
     <header className="header">
       {!isLoggedIn && (
         <>
+          <button
+            onClick={onSearchButtonClick}
+            type="button"
+            className="header__search-button"
+          >
+            Search Movie
+          </button>
           <button
             onClick={onRegisterButtonClick}
             type="button"

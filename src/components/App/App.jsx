@@ -1,15 +1,24 @@
 import React, { useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import MovieList from "../MovieList/MovieList";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import MovieDetail from "../MovieDetail/MovieDetail";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import MovieSearch from "../MovieSearch/MovieSearch";
+import Profile from "../Profile/Profile";
 import "./App.css";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { getCurrentUser } from "../../utils/api";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isMovieSearchOpen, setIsMovieSearchOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  let navigate = useNavigate();
 
   const handleRegisterSubmit = (name, email, password, avatar, resetForm) => {
     console.log("Registration data:", { name, email, password, avatar });
@@ -17,27 +26,54 @@ function App() {
     setIsRegisterModalOpen(false); // Close modal
   };
 
+  const handleMovieSelect = (movieId) => {
+    navigate(`/movie/${movieId}`);
+  };
+
+  const handleLogin = (email, password) => {
+    console.log("Login attempt:", email, password);
+    // Add your authentication logic here
+    setIsLoginModalOpen(false);
+    getCurrentUser().then((user) => {
+      setCurrentUser(user);
+    });
+    navigate("/profile");
+  };
+
+  console.log(isMovieSearchOpen);
   return (
     <div className="App">
-      <Header
-        onLoginButtonClick={() => setIsLoginModalOpen(true)}
-        onRegisterButtonClick={() => setIsRegisterModalOpen(true)}
-      />
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header
+          onLoginButtonClick={() => setIsLoginModalOpen(true)}
+          onRegisterButtonClick={() => setIsRegisterModalOpen(true)}
+          onSearchButtonClick={() => setIsMovieSearchOpen(true)}
+        />
+        <Routes>
+          <Route index element={<Movies />}></Route>
+          <Route
+            path="/profile"
+            element={<Profile user={currentUser} />}
+          ></Route>
+          <Route path="/movie/:movieId" element={<MovieDetail />} />
+        </Routes>
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          onClose={() => setIsLoginModalOpen(false)}
+          onLogin={handleLogin}
+        />
 
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
-
-      <RegisterModal
-        isOpen={isRegisterModalOpen}
-        onClose={() => setIsRegisterModalOpen(false)}
-        onRegisterModalSubmit={handleRegisterSubmit} // Pass the function
-        handleLogin={() => {
-          setIsRegisterModalOpen(false);
-        }}
-      />
-      <Movies />
+        <RegisterModal
+          isOpen={isRegisterModalOpen}
+          onClose={() => setIsRegisterModalOpen(false)}
+          onRegisterModalSubmit={handleRegisterSubmit}
+        />
+        <MovieSearch
+          isOpen={isMovieSearchOpen}
+          onClose={() => setIsMovieSearchOpen(false)}
+          onSelectMovie={handleMovieSelect}
+        />
+      </CurrentUserContext.Provider>
     </div>
   );
 }

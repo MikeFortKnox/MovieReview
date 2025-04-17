@@ -12,7 +12,7 @@ const ReviewForm = ({ movieId, addReview }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="reviewForm" onSubmit={handleSubmit}>
       <textarea
         value={review}
         onChange={(e) => setReview(e.target.value)}
