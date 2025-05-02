@@ -11,13 +11,35 @@ const MovieSearch = ({ onSelectMovie, isOpen, onClose }) => {
   });
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Ratings state: { imdbID: averageRating }
+  const [movieRatings, setMovieRatings] = useState({});
 
   const handleSearch = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const results = await searchMovies(searchFields);
-    setMovies(results);
-    setIsLoading(false);
+    setError(null);
+    try {
+      const results = await searchMovies(searchFields);
+      if (!results || results.length === 0) {
+        setError("No movies found.");
+        setMovies([]);
+        setMovieRatings({});
+      } else {
+        setMovies(results);
+        // Initialize ratings for found movies if not already set
+        const initialRatings = {};
+        results.forEach((movie) => {
+          initialRatings[movie.imdbID] = movieRatings[movie.imdbID] || 0;
+        });
+        setMovieRatings(initialRatings);
+      }
+    } catch (err) {
+      setError("An error occurred while searching for movies.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -37,13 +59,21 @@ const MovieSearch = ({ onSelectMovie, isOpen, onClose }) => {
       year: "",
     });
     setMovies([]);
+    setMovieRatings({});
+  };
+
+  const handleRateMovie = (imdbID, rating) => {
+    setMovieRatings((prevRatings) => ({
+      ...prevRatings,
+      [imdbID]: rating,
+    }));
   };
 
   if (!isOpen) return null;
 
   return (
     <ModalWithForm
-      title="Movie_Title"
+      title="Movie Search"
       buttonText="Movie Search"
       isOpen={isOpen}
       onClose={onClose}
@@ -53,6 +83,7 @@ const MovieSearch = ({ onSelectMovie, isOpen, onClose }) => {
         <div>
           <input
             type="text"
+            className="movie__input"
             name="title"
             value={searchFields.title}
             onChange={handleInputChange}
@@ -61,6 +92,7 @@ const MovieSearch = ({ onSelectMovie, isOpen, onClose }) => {
 
           <input
             type="number"
+            className="movie__input"
             name="year"
             value={searchFields.year}
             onChange={handleInputChange}
@@ -68,7 +100,11 @@ const MovieSearch = ({ onSelectMovie, isOpen, onClose }) => {
             min="1888"
             max={new Date().getFullYear()}
           />
-          <button type="submit" disabled={isLoading}>
+          <button
+            className="movie__search-button"
+            type="submit"
+            disabled={isLoading}
+          >
             {isLoading ? "Searching..." : "Search"}
           </button>
         </div>

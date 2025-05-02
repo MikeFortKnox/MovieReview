@@ -1,18 +1,32 @@
 import React from "react";
+import "./Profile.css";
 
-export default function Profile({ user }) {
+export default function Profile({ user, onEditProfile }) {
+  if (!user) {
+    return <div className="profile"></div>;
+  }
+
   return (
     <div className="profile">
-      <h1>Welcome, {user.name}!</h1>
+      <div className="profile__header">
+        <h1>Welcome, {user.name}!</h1>
+        <button className="profile__edit-button" onClick={onEditProfile}>
+          Edit Profile
+        </button>
+      </div>
 
       {user.avatar && (
-        <div className="avatar_container">
-          <img src={user.avatar} alt="User avatar" className="profile_avatar" />
+        <div className="profile__avatar-container">
+          <img
+            src={user.avatar}
+            alt="User avatar"
+            className="profile__avatar"
+          />
         </div>
       )}
 
-      <div className="profile_info">
-        {user.name && <p>Name: {user.name}</p>}
+      <div className="profile__info">
+        {user.name && <p className="profile__name">Name: {user.name}</p>}
       </div>
     </div>
   );

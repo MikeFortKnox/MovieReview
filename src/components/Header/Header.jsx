@@ -15,13 +15,7 @@ function Header({
     <header className="header">
       {!isLoggedIn && (
         <>
-          <button
-            onClick={onSearchButtonClick}
-            type="button"
-            className="header__search-button"
-          >
-            Search Movie
-          </button>
+          
           <button
             onClick={onRegisterButtonClick}
             type="button"
@@ -35,6 +29,13 @@ function Header({
             className="header__signin-button"
           >
             Login
+          </button>
+          <button
+            onClick={onSearchButtonClick}
+            type="button"
+            className="header__search-button"
+          >
+            Search Movie
           </button>
         </>
       )}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./ReviewForm.css";
 
 const ReviewForm = ({ movieId, addReview }) => {
   const [review, setReview] = useState("");
@@ -12,14 +13,19 @@ const ReviewForm = ({ movieId, addReview }) => {
   };
 
   return (
-    <form className="reviewForm" onSubmit={handleSubmit}>
-      <textarea
-        value={review}
-        onChange={(e) => setReview(e.target.value)}
-        placeholder="Write your review here..."
-      />
-      <button type="submit">Submit Review</button>
-    </form>
+    <div className="review-form-container">
+      <form className="reviewForm" onSubmit={handleSubmit}>
+        <textarea
+          className="reviewForm__textarea"
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+          placeholder="Write your review here..."
+        />
+        <button type="submit" className="reviewForm__submit-button">
+          Submit Review
+        </button>
+      </form>
+    </div>
   );
 };
 

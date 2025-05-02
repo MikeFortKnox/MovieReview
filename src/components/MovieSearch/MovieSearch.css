@@ -33,6 +33,17 @@
   height: auto;
 }
 
+.movie__search-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-left: 0;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
 .search-field {
   margin-bottom: 1rem;
   display: flex;

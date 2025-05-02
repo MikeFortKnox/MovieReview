@@ -81,6 +81,19 @@
   color: black;
 }
 
+.header__search-button {
+  margin: 0 20px;
+  font-size: 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  color: black;
+}
+
 .header__avatar {
   display: flex;
   width: 60px;
