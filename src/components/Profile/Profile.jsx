@@ -15,16 +15,6 @@ export default function Profile({ user, onEditProfile }) {
         </button>
       </div>
 
-      {user.avatar && (
-        <div className="profile__avatar-container">
-          <img
-            src={user.avatar}
-            alt="User avatar"
-            className="profile__avatar"
-          />
-        </div>
-      )}
-
       <div className="profile__info">
         {user.name && <p className="profile__name">Name: {user.name}</p>}
       </div>

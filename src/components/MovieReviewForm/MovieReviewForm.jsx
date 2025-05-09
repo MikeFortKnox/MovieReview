@@ -9,6 +9,7 @@ const MovieReviewForm = ({
     averageRating: 0, // Calculated average
   },
   addReview,
+  addRating,
   movie,
 }) => {
   // when we call addReview, pass movieRatings object into it along with the review information so we can add it to the array in App
@@ -18,13 +19,17 @@ const MovieReviewForm = ({
       <div className="rating_container">
         <StarRating
           currentRating={movieRatings.averageRating}
-          onRate={(rating) => rateMovie(movieRatings.id, rating)}
+          addRating={(rating) => addRating(movieRatings.id, rating)}
         />
         <span className="rating_count">
           ({movieRatings.ratings.length} ratings)
         </span>
       </div>
-      <ReviewForm movieId={movieRatings.id} addReview={addReview} />
+      <ReviewForm
+        movieId={movieRatings.id}
+        addRating={addRating}
+        addReview={addReview}
+      />
       <ul className="reviews_list">
         {movieRatings.reviews.map((review, index) => (
           <li key={index}>{review}</li>

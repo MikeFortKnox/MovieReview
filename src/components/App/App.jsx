@@ -18,6 +18,7 @@ function App() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isMovieSearchOpen, setIsMovieSearchOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [movies, setMovies] = useState([
@@ -62,6 +63,7 @@ function App() {
     // Add your authentication logic here
     setIsLoginModalOpen(false);
     getCurrentUser().then((user) => {
+      setIsLoggedIn(true);
       setCurrentUser(user);
     });
     navigate("/profile");
@@ -88,8 +90,16 @@ function App() {
     );
   };
 
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    if (review) {
+      addReview(movieRatings, review);
+      setReview("");
+    }
+  };
+
   // Rate a movie (new)
-  const rateMovie = (movieId, newRating) => {
+  const addRating = (movieId, newRating) => {
     setMovies((prevMovies) =>
       prevMovies.map((movie) => {
         if (movie.id === movieId) {
@@ -126,6 +136,7 @@ function App() {
           onLoginButtonClick={() => setIsLoginModalOpen(true)}
           onRegisterButtonClick={() => setIsRegisterModalOpen(true)}
           onSearchButtonClick={() => setIsMovieSearchOpen(true)}
+          isLoggedIn={isLoggedIn}
         />
         <Routes>
           {/* <Route index element={<Movies />}></Route> */}
@@ -136,7 +147,13 @@ function App() {
           ></Route>
           <Route
             path="/movie/:movieId"
-            element={<MovieDetail movies={movies} addReview={addReview} />}
+            element={
+              <MovieDetail
+                movies={movies}
+                addRating={addRating}
+                addReview={addReview}
+              />
+            }
           />
         </Routes>
         <LoginModal

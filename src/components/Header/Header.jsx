@@ -10,12 +10,11 @@ function Header({
   onSearchButtonClick,
 }) {
   const currentUser = useContext(CurrentUserContext);
-
+  console.log(isLoggedIn, currentUser);
   return (
     <header className="header">
       {!isLoggedIn && (
         <>
-          
           <button
             onClick={onRegisterButtonClick}
             type="button"

@@ -3,7 +3,7 @@ import { getMovieDetails } from "../../contexts/SearchMovieApi";
 import { useParams } from "react-router-dom";
 import MovieReviewForm from "../MovieReviewForm/MovieReviewForm";
 
-const MovieDetail = ({ movies, addReview }) => {
+const MovieDetail = ({ movies, addRating, addReview }) => {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   let params = useParams();
@@ -26,6 +26,7 @@ const MovieDetail = ({ movies, addReview }) => {
     <div className="movie_detail">
       <div className="movie_header">
         <MovieReviewForm
+          addRating={addRating}
           addReview={addReview}
           movieRatings={movies.find((m) => {
             if (m.id === params.movieId) return true;

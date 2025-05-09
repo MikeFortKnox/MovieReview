@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./StarRating.css";
 
-const StarRating = ({ currentRating, onRate }) => {
+const StarRating = ({ currentRating, addRating }) => {
   const [hoverRating, setHoverRating] = useState(0);
 
   return (
@@ -14,7 +14,7 @@ const StarRating = ({ currentRating, onRate }) => {
           }`}
           onMouseEnter={() => setHoverRating(star)}
           onMouseLeave={() => setHoverRating(0)}
-          onClick={() => onRate(star)}
+          onClick={() => addRating(star)}
         >
           ★
         </span>
