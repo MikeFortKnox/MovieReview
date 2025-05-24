@@ -1,0 +1,159 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.modal__button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.modal__close {
+  width: 20px;
+  height: 20px;
+  background: url(../../assets/closeicongray.png) center no-repeat;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  transform: rotate(90deg);
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  color: black;
+}
+
+.modal__close_content_image {
+  background: url(../../assets/closeicon.png) center no-repeat;
+}
+
+.modal__content {
+  background-color: #fff;
+  position: relative;
+  max-width: 496px;
+  padding: 28px 28px 36px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modal__content_type_image {
+  padding: 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal__input {
+  display: block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.modal__legend {
+  font-weight: 700;
+}
+
+.modal__label {
+  margin-top: 20px;
+}
+
+.modal__label_type_radio {
+  color: black;
+  margin-top: 5px;
+}
+
+.modal__radio-buttons {
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.modal__submit {
+  width: 124px;
+  height: 36px;
+  top: 557px;
+  left: 500px;
+  gap: 12px;
+  border: 1px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  margin-top: 25px;
+  font-weight: 700;
+}
+
+.modal__to-register {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__to-login {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__save {
+  margin-top: 8px;
+  margin-right: 16px;
+  border: 1px;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  height: 36px;
+  width: 128px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  cursor: pointer;
+}
+
+.modal__edit-profile {
+  margin-top: 32px;
+  margin-right: 16px;
+  border: 1px;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  height: 36px;
+  width: 128px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
