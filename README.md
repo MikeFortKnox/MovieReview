@@ -14,3 +14,8 @@ API: https://www.omdbapi.com/
 Languages used: React, JavaScript, HTML, CSS
 
 https://github.com/MikeFortKnox/MovieReview
+
+Servers:
+https://moviereview.fpr.net
+
+https://api.moviereview.fpr.net
