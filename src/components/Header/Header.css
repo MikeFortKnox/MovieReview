@@ -65,7 +65,12 @@
   padding: 0;
   background: none;
   cursor: pointer;
-  color: black;
+  color: wheat;
+}
+
+.header__signin-button:hover {
+  transform: translateY(-3px);
+  color: #ffd700;
 }
 
 .header__register-button {
@@ -78,7 +83,12 @@
   padding: 0;
   background: none;
   cursor: pointer;
-  color: black;
+  color: wheat;
+}
+
+.header__register-button:hover {
+  transform: translateY(-3px);
+  color: #ffd700;
 }
 
 .header__search-button {
@@ -91,7 +101,15 @@
   padding: 0;
   background: none;
   cursor: pointer;
-  color: black;
+  color: wheat;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.header__search-button:hover {
+  transform: translateY(-3px);
+  color: #ffd700;
 }
 
 .header__avatar {
