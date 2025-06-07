@@ -23,8 +23,8 @@ const MovieDetail = ({ movies, addRating, addReview }) => {
   if (!movie) return <div>Movie not found</div>;
   console.log(movies, params.movieId);
   return (
-    <div className="movie_detail">
-      <div className="movie_header">
+    <div className="movie__detail">
+      <div className="movie__header">
         <MovieReviewForm
           addRating={addRating}
           addReview={addReview}
@@ -44,7 +44,7 @@ const MovieDetail = ({ movies, addRating, addReview }) => {
           </p>
         </div>
       </div>
-      <div className="movie_info">
+      <div className="movie__info">
         <p>Director: {movie.Director}</p>
         <p>Actors: {movie.Actors}</p>
         <p>Plot: {movie.Plot}</p>

@@ -3,7 +3,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="movie_Footer">
+    <footer className="movie__footer">
       <p>Created by Michael Knox</p>
     </footer>
   );

@@ -128,7 +128,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="app_title">Movie Review App</h1>
+      <h1 className="app__title">Movie Review App</h1>
       {/* <MovieList movies={movies} addReview={addReview} rateMovie={rateMovie} /> */}
 
       <CurrentUserContext.Provider value={currentUser}>

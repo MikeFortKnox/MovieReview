@@ -8,8 +8,9 @@
   background-size: cover;
 }
 
-.app_title {
+.app__title {
   color: goldenrod;
+  font-family: FleurDeLeah, cursive;
 }
 
 .movie {

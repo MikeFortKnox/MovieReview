@@ -79,7 +79,7 @@ const MovieSearch = ({ onSelectMovie, isOpen, onClose }) => {
       onClose={onClose}
       onFormSubmit={handleSearch}
     >
-      <div className="movie_search">
+      <div className="movie__search">
         <div>
           <input
             type="text"
@@ -109,11 +109,11 @@ const MovieSearch = ({ onSelectMovie, isOpen, onClose }) => {
           </button>
         </div>
 
-        <div className="movie_results">
+        <div className="movie__results">
           {movies.map((movie) => (
             <div
               key={movie.imdbID}
-              className="movie_card"
+              className="movie__card"
               onClick={() => handleMovieClick(movie.imdbID)}
             >
               <img src={movie.Poster} alt={movie.Title} />

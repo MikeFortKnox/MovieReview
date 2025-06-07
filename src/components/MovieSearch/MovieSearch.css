@@ -1,4 +1,4 @@
-.movie_search {
+.movie__search {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -6,36 +6,36 @@
   overflow-y: scroll;
 }
 
-.movie_search input {
+.movie__search input {
   width: 70%;
   padding: 10px;
   margin-right: 10px;
 }
 
-.movie_results {
+.movie__results {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
 
-.movie_card {
+.movie__card {
   cursor: pointer;
   transition: transform 0.2s;
 }
 
-.movie_card:hover {
+.movie__card:hover {
   transform: scale(1.05);
 }
 
-.movie_card img {
+.movie__card img {
   width: 100%;
   height: auto;
 }
 
 .movie__search-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #7c0a02;
   color: white;
   border: none;
   border-radius: 5px;
