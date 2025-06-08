@@ -1,0 +1,18 @@
+.movie__list {
+  display: grid;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.movie__card {
+  border: 4px solid palegoldenrod;
+  border-radius: 8px;
+  padding: 16px;
+  background: firebrick;
+}
+
+.reviews__count {
+  font-size: 14px;
+  color: goldenrod;
+  margin-top: 5px;
+}
